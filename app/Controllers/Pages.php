@@ -4,11 +4,6 @@ namespace App\Controllers;
 
 class Pages extends BaseController
 {
-    public function index()
-    {
-        return view('index');
-    }
-
     public function view($page = 'home')
     {
         if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
