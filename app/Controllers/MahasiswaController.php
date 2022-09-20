@@ -15,7 +15,18 @@ class MahasiswaController extends BaseController
         $data = ['title' => 'Mahasiswa', 'mahasiswa' => $mahasiswa];
 
         return view('templates/header', $data)
-            . view('pages/mahasiswa', $data)
+            . view('mahasiswa/list', $data)
+            . view('templates/footer');
+    }
+
+    public function create()
+    {
+        $data = [
+            'title' => 'Create Mahasiswa'
+        ];
+
+        return view('templates/header', $data)
+            . view('mahasiswa/create')
             . view('templates/footer');
     }
     public function store()
@@ -27,5 +38,7 @@ class MahasiswaController extends BaseController
             'alamat' => $this->request->getPost('alamat')
         ];
         $mahasiswamodel->save($data);
+
+        return redirect()->to('/mahasiswa');
     }
 }
