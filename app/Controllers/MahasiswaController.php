@@ -31,6 +31,13 @@ class MahasiswaController extends BaseController
     }
     public function store()
     {
+        if (!$this->validate([
+            'npm' => 'required|numeric',
+            'nama' => 'required|string',
+            'alamat' => 'required',
+        ])) {
+            return redirect()->to('/create');
+        }
         $mahasiswamodel = new Mahasiswa();
         $data = [
             'npm' => $this->request->getPost('npm'),
@@ -38,6 +45,47 @@ class MahasiswaController extends BaseController
             'alamat' => $this->request->getPost('alamat')
         ];
         $mahasiswamodel->save($data);
+
+        return redirect()->to('/mahasiswa');
+    }
+
+    public function delete($id)
+    {
+        $mahasiswamodel = new Mahasiswa();
+        $mahasiswamodel->delete($id);
+        return redirect()->to('/mahasiswa');
+    }
+
+    public function edit($id)
+    {
+        $mahasiswamodel = new Mahasiswa();
+        $mahasiswa = $mahasiswamodel->find($id);
+
+        $data = [
+            'title' => 'Edit Mahasiswa'
+        ];
+
+        return view('templates/header', $data)
+            . view('mahasiswa/edit', $mahasiswa)
+            . view('templates/footer');
+    }
+
+    public function update($id)
+    {
+        if (!$this->validate([
+            'npm' => 'required|numeric',
+            'nama' => 'required|string',
+            'alamat' => 'required',
+        ])) {
+            return redirect()->to('/edit/' . $id);
+        }
+        $mahasiswamodel = new Mahasiswa();
+        $data = [
+            'npm' => $this->request->getVar('npm'),
+            'nama' => $this->request->getVar('nama'),
+            'alamat' => $this->request->getVar('alamat'),
+        ];
+        $mahasiswamodel->update($id, $data);
 
         return redirect()->to('/mahasiswa');
     }
