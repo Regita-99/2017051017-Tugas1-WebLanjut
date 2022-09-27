@@ -14,9 +14,7 @@ class MahasiswaController extends BaseController
 
         $data = ['title' => 'Mahasiswa', 'mahasiswa' => $mahasiswa];
 
-        return view('templates/header', $data)
-            . view('mahasiswa/list', $data)
-            . view('templates/footer');
+        return view('mahasiswa/list', $data);
     }
 
     public function create()
@@ -25,9 +23,7 @@ class MahasiswaController extends BaseController
             'title' => 'Create Mahasiswa'
         ];
 
-        return view('templates/header', $data)
-            . view('mahasiswa/create')
-            . view('templates/footer');
+        return view('mahasiswa/create');
     }
     public function store()
     {
@@ -59,15 +55,14 @@ class MahasiswaController extends BaseController
     public function edit($id)
     {
         $mahasiswamodel = new Mahasiswa();
-        $mahasiswa = $mahasiswamodel->find($id);
+
 
         $data = [
+            '$mahasiswa' => $mahasiswamodel->find($id),
             'title' => 'Edit Mahasiswa'
         ];
 
-        return view('templates/header', $data)
-            . view('mahasiswa/edit', $mahasiswa)
-            . view('templates/footer');
+        return view('mahasiswa/edit', $data);
     }
 
     public function update($id)
