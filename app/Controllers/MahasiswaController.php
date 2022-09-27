@@ -31,6 +31,7 @@ class MahasiswaController extends BaseController
             'npm' => 'required|numeric',
             'nama' => 'required|string',
             'alamat' => 'required',
+            'deskripsi' => 'required',
         ])) {
             return redirect()->to('/create');
         }
@@ -38,7 +39,8 @@ class MahasiswaController extends BaseController
         $data = [
             'npm' => $this->request->getPost('npm'),
             'nama' => $this->request->getPost('nama'),
-            'alamat' => $this->request->getPost('alamat')
+            'alamat' => $this->request->getPost('alamat'),
+            'deskripsi' => $this->request->getPost('deskripsi')
         ];
         $mahasiswamodel->save($data);
 
@@ -58,7 +60,7 @@ class MahasiswaController extends BaseController
 
 
         $data = [
-            '$mahasiswa' => $mahasiswamodel->find($id),
+            'mahasiswa' => $mahasiswamodel->find($id),
             'title' => 'Edit Mahasiswa'
         ];
 

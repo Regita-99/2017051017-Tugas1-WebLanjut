@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/Assets/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/Assets/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/Assets/AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css">
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -54,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </nav>
         <!-- /.navbar -->
-<?= $this-> renderSection('content');?>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -68,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-
+                    <?= $this->renderSection('content'); ?>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
@@ -104,6 +105,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="/Assets/AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/Assets/AdminLTE-3.2.0/dist/js/demo.js"></script>
+    <script src="/Assets/AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $(function() {
+            $('#deskripsi').summernote()
+        })
+    </script>
 </body>
 
 </html>

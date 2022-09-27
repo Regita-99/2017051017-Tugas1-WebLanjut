@@ -9,6 +9,7 @@
                 <th scope="col">NPM</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Alamat</th>
+                <th scope="col">deskripsi</th>
                 <th scope="col">Created_At</th>
                 <th scope="col">Action</th>
             </tr>
@@ -21,6 +22,7 @@
                     <td><?= $mhs['npm'] ?></td>
                     <td><?= $mhs['nama'] ?></td>
                     <td><?= $mhs['alamat'] ?></td>
+                    <td><?= $mhs['deskripsi'] ?></td>
                     <td><?= $mhs['created_at'] ?></td>
                     <td>
                         <div class="d-flex">
